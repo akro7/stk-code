@@ -29,7 +29,12 @@ jobs:
         working-directory: android
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleDebug \
+            -Ppackage_name=org.supertuxkart.stk \
+            -PcompileSdkVersion=34 \
+            -PtargetSdkVersion=34 \
+            -PminSdkVersion=21 \
+            -PbuildToolsVersion=34.0.0
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
