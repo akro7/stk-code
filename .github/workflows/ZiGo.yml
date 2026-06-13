@@ -13,6 +13,17 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Checkout assets
+        uses: actions/checkout@v4
+        with:
+          repository: supertuxkart/stk-assets-mobile
+          path: stk-assets-mobile
+
+      - name: Copy res to android
+        run: |
+          cp -r stk-assets-mobile/res android/res || true
+          cp -r stk-assets-mobile/assets android/assets || true
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
